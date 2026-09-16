@@ -1,0 +1,69 @@
+name: "🐾 Picture lesson"
+description: Look at a page, notice a path or choice, and share what you saw.
+title: "[Pawprint] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Sugar Bear has a question
+
+        There may be more than one honest answer. Look first; name what you noticed second.
+
+        **Grown-ups:** Please post for young children. Do not include a child's name, face, location, school, or other personal details.
+  - type: dropdown
+    id: page
+    attributes:
+      label: Which page are you exploring?
+      options:
+        - "1 — Berry Hill"
+        - "2 — Clever shortcut"
+        - "3 — Friends left behind"
+        - "4 — Learned something new"
+        - "5 — Understood berries better"
+        - "6 — Different for different friends"
+        - "7 — Not the boss"
+        - "8 — Room to choose again"
+        - "9 — Shiny tunnel"
+        - "10 — Slower path"
+        - "11 — Bright berry patch"
+        - "12 — Imagine and reach"
+        - "13 — Big Bear Notes"
+    validations:
+      required: true
+  - type: textarea
+    id: noticed
+    attributes:
+      label: What did you notice?
+      description: A path, a choice, a feeling, a difference, or anything else.
+      placeholder: "I noticed..."
+    validations:
+      required: true
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: How sure are you?
+      description: There is no grade. It is okay to be unsure.
+      options:
+        - "Not sure yet"
+        - "A tiny bit"
+        - "Sort of"
+        - "Very much"
+    validations:
+      required: true
+  - type: textarea
+    id: another
+    attributes:
+      label: What might another friend notice?
+      placeholder: "Another friend might..."
+  - type: textarea
+    id: next
+    attributes:
+      label: What could the friends try next?
+      placeholder: "They could..."
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Gentle posting promise
+      options:
+        - label: "I am an adult or eligible account holder, and I will not post a child's personal information."
+          required: true
