@@ -1,0 +1,45 @@
+name: "🌱 Plant a wonder"
+description: Ask a path question without pretending it is already an answer.
+title: "[Wonder] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Wonder first
+
+        A destination you can imagine may not have a path you can take. Uncertainty does not have to be failure.
+
+        **Grown-ups:** Please post for young children. Do not include a child's name, face, location, school, or other personal details.
+  - type: textarea
+    id: wonder
+    attributes:
+      label: What do you wonder?
+      placeholder: "I wonder whether..."
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: What have you noticed so far?
+      placeholder: "So far, I noticed..."
+  - type: dropdown
+    id: next
+    attributes:
+      label: What could help next?
+      options:
+        - "Ask another friend"
+        - "Look for another path"
+        - "Take a closer look"
+        - "Pause before choosing"
+        - "Try a small reversible step"
+        - "Learn something new"
+        - "I do not know yet"
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Gentle posting promise
+      options:
+        - label: "I am an adult or eligible account holder, and I will not post a child's personal information."
+          required: true
