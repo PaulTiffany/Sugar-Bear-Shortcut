@@ -1,0 +1,42 @@
+name: Picture Readback
+
+# The human self-review gate comes from Tiffany-Studios/pr-readback.
+# It is pinned for reproducibility; provenance and licence: ../NOTICE.md.
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review, converted_to_draft]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  readback:
+    name: Check the pawprints
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the grown-up readback promise
+        uses: Tiffany-Studios/pr-readback@1a0d7b05838c3272681dd7afdfc1821732a27140
+        with:
+          review-label: I am the responsible grown-up, and I have reviewed my own changes
+          guidance: Read the Observer readback and Human boundary sections in the pull request template.
+
+      - name: Check out the proposed story
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up picture checks
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install picture readers
+        run: python -m pip install Pillow==12.3.0 markdown-it-py==4.0.0
+
+      - name: Build observer receipt
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python .github/scripts/picture_readback.py
